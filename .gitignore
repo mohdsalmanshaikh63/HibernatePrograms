@@ -5,6 +5,9 @@
 Servers
 Servers/*
 
+#RemoteSystemFolder
+RemoteSystems*
+
 # Log file
 *.log
 
