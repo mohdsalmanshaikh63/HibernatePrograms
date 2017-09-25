@@ -8,9 +8,9 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hb-03-one-to-many?useSSL=false</property>
+        <property name="connection.username">hbstudent</property>
+        <property name="connection.password">hbstudent</property>
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
@@ -21,7 +21,7 @@
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
         
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
