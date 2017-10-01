@@ -105,12 +105,14 @@ public class Instructor {
 		this.instructorDetail = instructorDetail;
 	}
 		
-	
+	@Override
+	public String toString() {
+		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", instructorDetail=" + instructorDetail + "]";
+	}
 	
 	// add convenience methods for bi-directional relationships
 	
-	
-
 	public void add(Course tempCourse) {
 		if(courses == null) {
 			courses = new ArrayList<>();
@@ -121,12 +123,6 @@ public class Instructor {
 		tempCourse.setInstructor(this);
 	}
 	
-	@Override
-	public String toString() {
-		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", instructorDetail=" + instructorDetail + ", courses=" + courses + "]";
-	}
-
 	// getter method for courses of the instructor
 	public List<Course> getCourses() {
 		return courses;

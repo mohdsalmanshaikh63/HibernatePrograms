@@ -8,7 +8,7 @@ import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 
-public class CreateCoursesDemo {
+public class DeleteCourseDemo {
 
 	public static void main(String[] args) {
 
@@ -20,29 +20,22 @@ public class CreateCoursesDemo {
 				// create session
 				Session session = factory.getCurrentSession();) {
 
+			
 			// start the transaction
 			session.beginTransaction();
-
-			// get the instructor from db
-			int theId = 1;
-			Instructor instructor = session.get(Instructor.class, theId);
-
-			// create some courses
-			Course tempCourse1 = new Course("Air Guitar - Ultimate Guide");
-			Course tempCourse2 = new Course("Violin Master Class");
-
-			// add courses to the instructor
-			instructor.add(tempCourse1);
-			instructor.add(tempCourse2);
-
-			// save the courses
-			// session.save(tempCourse1);
-			// session.save(tempCourse2);
-			session.persist(instructor);
-
+			
+			// get the course
+			int theId = 10;
+			Course tempCourse = session.get(Course.class, theId);
+			
+			// delete the course
+			System.out.println("Deleting course: "+ tempCourse);
+			
+			session.delete(tempCourse);
+			
 			// commit the transaction
 			session.getTransaction().commit();
-
+			
 			System.out.println("Done!");
 		}
 

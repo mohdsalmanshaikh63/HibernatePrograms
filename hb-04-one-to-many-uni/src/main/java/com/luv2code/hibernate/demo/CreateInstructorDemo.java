@@ -8,7 +8,7 @@ import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 
-public class CreateCoursesDemo {
+public class CreateInstructorDemo {
 
 	public static void main(String[] args) {
 
@@ -20,30 +20,27 @@ public class CreateCoursesDemo {
 				// create session
 				Session session = factory.getCurrentSession();) {
 
+			// create the objects
+			Instructor tempInstructor = new Instructor("Susan", "Public", "susan@luv2code.com");
+
+			InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.luv2code.com/Gamer", "Video Gamer!!!");
+
+			// start a transaction
+			tempInstructor.setInstructorDetail(tempInstructorDetail);
+
 			// start the transaction
 			session.beginTransaction();
 
-			// get the instructor from db
-			int theId = 1;
-			Instructor instructor = session.get(Instructor.class, theId);
+			// save the Instructor object
 
-			// create some courses
-			Course tempCourse1 = new Course("Air Guitar - Ultimate Guide");
-			Course tempCourse2 = new Course("Violin Master Class");
+			// Note: this will ALSO save the details object
+			// because of CascadeType.ALL
 
-			// add courses to the instructor
-			instructor.add(tempCourse1);
-			instructor.add(tempCourse2);
-
-			// save the courses
-			// session.save(tempCourse1);
-			// session.save(tempCourse2);
-			session.persist(instructor);
+			System.out.println("************ Saving instructor:" + tempInstructor);
+			session.save(tempInstructor);
 
 			// commit the transaction
 			session.getTransaction().commit();
-
-			System.out.println("Done!");
 		}
 
 	}
